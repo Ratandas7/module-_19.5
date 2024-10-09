@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Delete Musician{% endblock title %}
+{% block content %}
+
+<div class="w-50 m-auto my-5 bg-warning-subtle">
+    
+    <form method="post" class="border p-5 mt-5">
+        {% csrf_token %}
+        <p class="display-6 mb-5">Are you sure you want to delete?</p>
+        <button type="submit" class="btn btn-outline-dark rounded-top-0 w-25">Yes</button>
+        <a href=" {% url "profile" %} " class="btn btn-dark rounded-top-0 w-50">No</a>
+    </form>
+</div>
+
+{% endblock content %}

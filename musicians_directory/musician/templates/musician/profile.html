@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Profile{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="my-5 text-center">
+        <a href=" {% url "edit_profile" %} " class="btn btn-outline-dark rounded-top-0 col-6">Edit Profile</a>
+    </div>
+
+    <table class="table table-bordered table-hover my-5">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for album in albums %}
+                <tr>
+                    <th scope="row">{{album.id}}</th>
+                    <td><a href=" {% url "edit_musician" album.musician.pk %} " class="text-decoration-none text-dark">{{album.musician.first_name}} {{album.musician.last_name}}</a></td>
+                    <td>{{album.musician.email}}</td>
+                    <td>{{album.album_rating}}</td>
+                    <td>{{album.musician.instrument_type}}</td>
+                    <td>{{album.album_name}}</td>
+                    <td>{{album.album_release_date|date:"d-M-Y"}}</td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href=" {% url "edit_album" album.pk %} " class="btn btn-sm btn-outline-dark rounded-top-0">Edit</a>
+                            <a href=" {% url "delete_musician" album.musician.pk %} " class="btn btn-sm btn-dark rounded-top-0">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+
+<h1 class="text-center display-4 my-5">Welcome To Our Musician Website</h1>
+
+<div class="container mb-5">
+
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument Type</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for object in object_list %}
+                <tr>
+                    <th scope="row">{{object.id}}</th>
+                    <td>{{object.musician.first_name}} {{object.musician.last_name}}</td>
+                    <td>{{object.musician.email}}</td>
+                    <td>{{object.album_rating}}</td>
+                    <td>{{object.musician.instrument_type}}</td>
+                    <td>{{object.album_name}}</td>
+                    <td>{{object.album_release_date|date:"d-M-Y"}}</td>
+                </tr>
+            {% endfor %}
+          
+        </tbody>
+      </table>
+
+</div>
+{% endblock content %}
